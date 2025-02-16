@@ -19,12 +19,12 @@ C_INCLUDES = -I./ \
     -IThirdParty/CMSIS/Include \
     -IThirdParty/CMSIS/Device/ST/STM32F4xx/Include \
     -IThirdParty/STM32F4xx_HAL_Driver/Inc \
-    -IBoard/v3/Inc \
     -IThirdParty/FreeRTOS/Source/include \
     -IThirdParty/FreeRTOS/Source/CMSIS_RTOS \
     -IThirdParty/FreeRTOS/Source/portable/GCC/ARM_CM4F \
     -IThirdParty/STM32_USB_Device_Library/Core/Inc \
     -IThirdParty/STM32_USB_Device_Library/Class/CDC/Inc \
+    -IBoard/v3/Inc \
     -IMotorControl \
     -Ifibre-cpp/include
 
@@ -37,13 +37,13 @@ CFLAGS = $(MCU) $(C_DEFS) $(C_INCLUDES) -Og \
 # Source files grouped by directory
 C_SOURCES = \
     $(wildcard ThirdParty/STM32F4xx_HAL_Driver/Src/*.c) \
-    $(wildcard Board/v3/Src/*.c) \
     $(wildcard ThirdParty/FreeRTOS/Source/*.c) \
     $(wildcard ThirdParty/FreeRTOS/Source/portable/GCC/ARM_CM4F/*.c) \
     $(wildcard ThirdParty/FreeRTOS/Source/portable/MemMang/*.c) \
     $(wildcard ThirdParty/FreeRTOS/Source/CMSIS_RTOS/*.c) \
     $(wildcard ThirdParty/STM32_USB_Device_Library/Core/Src/*.c) \
     $(wildcard ThirdParty/STM32_USB_Device_Library/Class/CDC/Src/*.c) \
+    $(wildcard Board/v3/Src/*.c) \
     $(wildcard MotorControl/*.c) \
     $(wildcard Drivers/STM32/*.c) \
     $(wildcard communication/can/*.c) \
