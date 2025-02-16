@@ -1,0 +1,12 @@
+.PHONY: AUTOHEADERS
+
+PY_CMD := python3  # 根据实际的Python命令调整
+
+AUTOHEADERS:
+	@echo $(PY_CMD)
+	@mkdir -p autogen
+	@$(PY_CMD) tools/odrive/version.py --output autogen/version.c
+	@$(PY_CMD) interface_generator_stub.py --definitions odrive-interface.yaml --template fibre-cpp/interfaces_template.j2 --output autogen/interfaces.hpp
+	@$(PY_CMD) interface_generator_stub.py --definitions odrive-interface.yaml --template fibre-cpp/function_stubs_template.j2 --output autogen/function_stubs.hpp
+	@$(PY_CMD) interface_generator_stub.py --definitions odrive-interface.yaml --generate-endpoints 'ODrive3' --template fibre-cpp/endpoints_template.j2 --output autogen/endpoints.hpp
+	@$(PY_CMD) interface_generator_stub.py --definitions odrive-interface.yaml --template fibre-cpp/type_info_template.j2 --output autogen/type_info.hpp
